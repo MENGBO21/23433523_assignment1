@@ -8,6 +8,8 @@ def clean(input1, input2, output):
     merged_df.dropna(inplace=True)
     cleaned_df = merged_df[~merged_df['job'].str.contains('insurance|Insurance')]
     cleaned_df.to_csv(output, index=False)
+    output_df = pd.read_csv(args.output)
+    print("Output file shape is:", output_df.shape)
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('input1', help='respondent_contact.csv file')
